@@ -10,3 +10,9 @@ class COLOR_NUMBERS:
     incorrect = 1
     semi_correct = 2
     correct = 3
+
+
+@dataclass
+class GAME_KEYS:
+    backspace = 127
+    enter = 10
