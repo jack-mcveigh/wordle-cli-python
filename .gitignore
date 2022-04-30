@@ -1,0 +1,6 @@
+# Files
+*.py[cod]
+
+
+# Dirs
+__pycache__/
