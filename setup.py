@@ -30,7 +30,7 @@ def _get_version() -> str:
 
 
 setup(
-    name='wordle',
+    name='wordle-cli',
     version=_get_version(),
     description='A Wordle Clone for your Terminal, written in Python.',
     long_description=_read_readme(),
@@ -44,7 +44,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
-            'wordle=wordle.cli:entry_point',
+            'wordle-cli=wordle.cli:entry_point',
         ],
     },
     install_requires=_read_requirements()

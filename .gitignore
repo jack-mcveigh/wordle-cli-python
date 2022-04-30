@@ -5,4 +5,4 @@
 # Dirs
 __pycache__/
 build/
-wordle.egg-info/
+wordle_cli.egg-info/
