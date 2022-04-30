@@ -10,7 +10,7 @@ LINE_LENGTH = 5
 
 class LetterState(Enum):
     incorrect = COLOR_NUMBERS.incorrect
-    semi_correct = COLOR_NUMBERS.incorrect
+    semi_correct = COLOR_NUMBERS.semi_correct
     correct = COLOR_NUMBERS.correct
 
 
@@ -33,6 +33,11 @@ class Line:
 
     def __init__(self):
         self.values = [Letter() for _ in range(self.length)]
+
+    def __repr__(self) -> str:
+        return ''.join(
+            [letter.value for letter in self.values if letter.value]
+        )
 
     def enter_letter(self, letter: str) -> None:
         if self.curr_pos == self.length - 1:
