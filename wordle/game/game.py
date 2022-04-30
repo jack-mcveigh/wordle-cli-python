@@ -24,7 +24,7 @@ class Game:
         self.__init_board()
 
         self.word_list = self.__load_word_list()
-        self.word = random.choice(self.word_list)
+        self.word = 'LUPUS' or random.choice(self.word_list)
         self.word_letter_counts = collections.Counter(self.word)
 
         self.solved = False
@@ -68,6 +68,8 @@ class Game:
             line.delete_letter()
         elif char == GAME_KEYS.enter:
             if line.curr_pos == line.length - 1:
+                if str(line) not in self.word_list:
+                    return False
                 self.board.enter_word()
                 self.solved = self.__check_entered_word()
         else:
@@ -88,7 +90,8 @@ class Game:
 
         # Find yellow letters
         for entered_letter in line.values:
-            if test_letter_counts[entered_letter.value]:
+            if (test_letter_counts[entered_letter.value]
+                    and entered_letter.state != LetterState.correct):
                 test_letter_counts[entered_letter.value] -= 1
                 entered_letter.state = LetterState.semi_correct
 
