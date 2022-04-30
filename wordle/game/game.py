@@ -1,5 +1,6 @@
 import curses
 import random
+from turtle import st
 
 from .board import Board
 from ..config import DATA_PATH, COLOR_NUMBERS
@@ -29,11 +30,13 @@ class Game:
         self.__draw(stdscr)
         while self.board.curr_line < self.board.num_lines:
             line = self.board.lines[self.board.curr_line]
-            line.enter_letter('a')
+            char = chr(stdscr.getch())
+            if not char.isalpha():  # Will not allow backspace
+                continue
+            line.enter_letter(char)
             if line.curr_pos == line.length:
                 self.board.enter_word()
             self.__draw(stdscr)
-            _ = input()
 
     def __draw(self, stdscr):
         stdscr.clear()
