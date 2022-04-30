@@ -23,8 +23,9 @@ class Game:
     def play(self):
         self.__init_board()
 
-        self.word_list = self.__load_word_list()
-        self.word = random.choice(self.word_list)
+        self.wordle_list = self.__load_word_list('wordle_list.txt')
+        self.all_words_list = self.__load_word_list('words_list.txt')
+        self.word = random.choice(self.wordle_list)
         self.word_letter_counts = collections.Counter(self.word)
 
         self.solved = False
@@ -34,6 +35,7 @@ class Game:
 
     def __loop(self, stdscr) -> None:
         self.stdscr = stdscr
+        curses.curs_set(0)
         init_colors()
 
         self.__draw()
@@ -68,7 +70,7 @@ class Game:
             line.delete_letter()
         elif char == GAME_KEYS.enter:
             if line.curr_pos == line.length - 1:
-                if str(line) not in self.word_list:
+                if str(line) not in self.all_words_list:
                     return False
                 self.board.enter_word()
                 self.solved = self.__check_entered_word()
