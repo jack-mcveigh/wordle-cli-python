@@ -23,7 +23,7 @@ class Game:
         self.__init_board()
 
         self.word_list = self.__load_word_list()
-        self.word = 'CRATE' or random.choice(self.word_list)
+        self.word = random.choice(self.word_list)
         self.solved = False
 
         curses.wrapper(self.__loop)
