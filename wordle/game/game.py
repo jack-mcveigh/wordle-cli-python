@@ -24,7 +24,7 @@ class Game:
         self.__init_board()
 
         self.word_list = self.__load_word_list()
-        self.word = 'LUPUS' or random.choice(self.word_list)
+        self.word = random.choice(self.word_list)
         self.word_letter_counts = collections.Counter(self.word)
 
         self.solved = False
