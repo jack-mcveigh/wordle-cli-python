@@ -18,6 +18,9 @@ class Letter:
     value: Optional[str] = None
     state: Optional[LetterState] = None
 
+    def __str__(self) -> str:
+        return self.value or '_'
+
     @property
     def bg_color(self) -> int:
         if self.state is None:

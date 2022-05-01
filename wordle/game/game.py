@@ -52,7 +52,7 @@ class Game:
         for line in self.board.lines:
             for letter in line.values:
                 self.stdscr.addstr(
-                    f" {letter.value or '_'}  ",
+                    f" {letter} ",
                     curses.color_pair(letter.bg_color)
                 )
             self.stdscr.addstr('\n\r')
@@ -108,7 +108,7 @@ class Game:
         for letter in line.values:
             time.sleep(0.25)
             self.stdscr.addstr(
-                f" {letter.value}  ",
+                f" {letter} ",
                 curses.color_pair(letter.bg_color)
             )
             curses.curs_set(1)
