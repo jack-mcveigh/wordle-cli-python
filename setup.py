@@ -39,7 +39,8 @@ setup(
     packages=find_packages(),
     package_data={
         'wordle': [
-            'data/wordle_list.txt'
+            'data/wordle_list.txt',
+            'data/words_list.txt'
         ]
     },
     entry_points={

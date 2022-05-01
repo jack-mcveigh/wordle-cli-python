@@ -111,8 +111,11 @@ class Game:
                 f" {letter.value}  ",
                 curses.color_pair(letter.bg_color)
             )
+            curses.curs_set(1)
             self.stdscr.refresh()
         self.stdscr.addstr('\n\r')
+
+        curses.curs_set(0)
 
     def __post_game(self):
         if self.solved:
@@ -128,6 +131,6 @@ class Game:
             self.play()
 
     @staticmethod
-    def __load_word_list() -> str:
-        with open(f'{DATA_PATH}/wordle_list.txt', 'r') as word_file:
+    def __load_word_list(file: str) -> str:
+        with open(f'{DATA_PATH}/{file}', 'r') as word_file:
             return [word.strip() for word in word_file]
